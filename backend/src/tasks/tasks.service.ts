@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { CreateTaskDto, UpdateTaskDto } from './dto/create-task.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './entities/task.entity';
@@ -23,6 +27,9 @@ export class TasksService {
   }
 
   async findOne(id: number) {
+    if (isNaN(id)) {
+      throw new BadRequestException('Invalid ID format');
+    }
     const task = await this.repo.findOne({ where: { id } });
     if (!task) {
       throw new NotFoundException(`Task with ID ${id} not found`);
