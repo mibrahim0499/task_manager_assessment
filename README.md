@@ -121,6 +121,18 @@ Frontend runs at: `http://localhost:5173`
 
 ---
 
+## 🧪 Testing
+
+Unit tests are included for the core task management logic (Controller and Service).
+
+### Running Backend Tests
+```bash
+cd backend
+npm test
+```
+
+---
+
 ## 🔗 API Endpoints
 
 | Method | Endpoint | Description |
