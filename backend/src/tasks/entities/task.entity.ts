@@ -18,14 +18,12 @@ export class Task {
   description?: string;
 
   @Column({
-    type: 'enum',
     enum: TaskStatus,
     default: TaskStatus.TODO,
   })
   status: TaskStatus;
 
   @Column({
-    type: 'enum',
     enum: TaskPriority,
     default: TaskPriority.MEDIUM,
   })
