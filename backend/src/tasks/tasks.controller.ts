@@ -1,6 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto, UpdateTaskDto } from './dto/create-task.dto';
+import { TaskPriority, TaskStatus } from './enums/enums';
 
 @Controller('tasks')
 export class TasksController {
@@ -12,8 +22,11 @@ export class TasksController {
   }
 
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  findAll(
+    @Query('status') status?: TaskStatus,
+    @Query('priority') priority?: TaskPriority,
+  ) {
+    return this.tasksService.findAll(status, priority);
   }
 
   @Get(':id')
