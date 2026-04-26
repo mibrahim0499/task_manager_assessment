@@ -5,6 +5,7 @@ import { ApiKeyGuard } from './auth/api-key.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.useGlobalGuards(new ApiKeyGuard());
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
