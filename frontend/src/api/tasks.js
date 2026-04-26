@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000';
-const API_KEY = 'task-manager-123';
+// I didn't created env as it was written that it should run instantly. As its a very straightforward task.
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_KEY = import.meta.env.VITE_API_KEY || 'task-manager-123';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
